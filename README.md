@@ -78,12 +78,20 @@ Também foram verificadas:
 - Quantidades
 - Avaliações
 
+Foi criada a coluna `dia_semana` a partir da data da venda para auxiliar nas análises por dia da semana.
+
 Foi realizada ainda uma validação do valor total das vendas, comparando o valor original com o cálculo do preço unitário, quantidade e imposto.
 
 Após o tratamento, os dados foram salvos em uma nova base:
 
 ```
 data/processed/vendas_tratadas.csv
+```
+
+A versão dos dados tratados carregada no PostgreSQL também foi exportada para:
+
+```
+data/processed/vendas_tratadas_sql.csv
 ```
 
 ### 4. Estatística e análise
@@ -98,14 +106,13 @@ Foram criados gráficos utilizando Matplotlib para representar os principais res
 
 Os gráficos e arquivos com os resultados estão armazenados na pasta:
 
-
 ```
 resultados/
 ```
 
 ### Principais resultados
 
-1. A filial Giza apresentou a maior receita, com aproximadamente  110.568,71 .
+1. A filial Giza apresentou a maior receita, com aproximadamente  R$ 110.568,71 .
 2. A filial Alex apresentou a maior quantidade de vendas, com  340 vendas .
 3. A linha de produto Food and beverages apresentou a maior receita, com aproximadamente  56.144,84 .
 4. Food and beverages também apresentou a maior avaliação média, com aproximadamente  7,11 .
@@ -125,6 +132,40 @@ O processo realizado no projeto possui relação com o conceito de ETL (Extract,
 **Load:** os dados tratados foram salvos em um novo arquivo CSV e também carregados na tabela de dados tratados do PostgreSQL.
 
 A separação entre os dados originais e tratados permite manter a base original preservada e utilizar uma versão preparada para as análises.
+
+## Como executar
+
+### 1. Banco de dados
+
+No PostgreSQL, execute os scripts da pasta sql/ na seguinte ordem:
+
+```
+01_criar_banco.sql
+02_criar_tabelas.sql
+03_consultas.sql
+```
+
+O banco de dados utilizado no projeto é:
+
+```
+supermarket_sales
+```
+
+### 2. Python
+
+Instale as bibliotecas utilizadas no projeto:
+
+pip install -r requirements.txt
+
+Execute os scripts da pasta src/ na seguinte ordem:
+
+```
+`01_leitura_dados.py
+02_etl_vendas.py
+03_estatistica.py
+```
+
+Os arquivos gerados pelo tratamento ficam na pasta `data/processed/` e os resultados das análises e gráficos ficam na pasta `resultados/`.
 
 ### Estrutura do projeto
 
