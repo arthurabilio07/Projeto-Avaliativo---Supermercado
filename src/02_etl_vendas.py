@@ -11,6 +11,8 @@ df["Time"] = pd.to_datetime(df["Time"], format="%H:%M:%S %p").dt.time
 print("Tipos após conversão:")
 print(df.dtypes)
 
+df["dia_semana"] = df["Date"].dt.day_name()
+
 # Padronização dos nomes das colunas
 df = df.rename(columns={
     "Invoice ID": "id_venda",

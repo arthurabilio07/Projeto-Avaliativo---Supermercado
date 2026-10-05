@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Leitura da base tratada
-df = pd.read_csv("data/processed/vendas_tratadas.csv")
-
+df = pd.read_csv("data/processed/vendas_tratadas_sql.csv")
 
 # Conversão das colunas de data e hora
 df["data_venda"] = pd.to_datetime(df["data_venda"])
